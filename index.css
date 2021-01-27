@@ -1,0 +1,244 @@
+body {
+    margin: 0
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.main {
+    position: fixed;
+    width: calc(100% - 300px);
+    height: 100%;
+    background-color: #ffffff;
+    top: 60px;
+    left: 18.75em;
+}
+
+/* //////////////////////////////////////////////////////////////////////// For PC /////////////////////////////////////////////////////////////////////////////////// */
+
+
+/* ////////////////////////////////// header ////////////////////////////////// */
+.header-nav {
+    position: fixed;
+    background-color:#e6e5e5;
+    top: 0;
+    left: 300px;
+    height: 60px;
+    width: calc(100% - 300px);
+}
+
+.user-box {
+    position: fixed;
+    width: 150px;
+    height: 40px;
+    background-color: orange;
+    right:20px;
+
+}
+
+.notification-box {
+    position :fixed;
+    width: 40px;
+    height:40px;
+    background-color:orange;
+    right: 200px;
+    
+}
+
+.chatbot-box {
+    position :fixed;
+    width: 40px;
+    height:40px;
+    background-color:orange;
+    right: 270px;
+    
+}
+
+
+
+/* /////////////////////////////////////////////////////////////////////////////////// */
+
+
+/* ///////////////////////////////// sidebar //////////////////////////////////// */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 18.75em;
+    background-color: #353a44 ;
+    display: block;
+}
+
+.brand {
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    top: 0;
+    left: 0;
+    background-color:#3a3f49;
+}
+
+.navbar-bottom {
+    position: fixed;
+    bottom: 0px;
+    left: 0;
+    height: 5em;
+    width: 100%;
+    background-color: #353a44 ;
+    display: none;
+}
+
+
+/* //////////////////////////////////////////////////////////////////////////////////// */
+
+
+/* ///////////////////////////////// main //////////////////////////////////// */
+
+
+.case-overview1 {
+    height: 7.5em;
+}
+
+.case-overview2 {
+    height: 7.5em;
+}
+
+.case-overview-section {
+    height: 7.5em;
+    background-color:blue;
+}
+
+.content1 {
+    height: 56em;
+    background-color:red;
+    display: block;
+}
+
+
+.content2 {
+    height: 56em;
+    background-color:red;
+    display: block;
+}
+
+
+/* .map {
+    position:absolute;
+    top: 9em;
+    left: 1em;
+    width: 48%;
+    height: 50em;
+    background-color:red;
+}
+
+.search-city-box {
+    position:absolute;
+    top: 9em;
+    right: 4em;
+    width: 40%;
+    height: 20em;
+    background-color:red;
+}
+
+.new-box {
+    position:absolute;
+    top: 9em;
+    right: 4em;
+    width: 40%;
+    height: 28em;
+    background-color:red;
+} */
+
+
+/* //////////////////////////////////////////////////////////////////////////////////// */
+
+
+
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+
+
+
+
+/* //////////////////////////////////////////////////// For SmartPhone ///////////////////////////////////////////////////////////////////// */
+
+@media (max-width:739px) {
+    .sidebar {
+        display: none;
+    }
+
+    .content2 {
+        display: none;
+    }
+
+    .content1 {
+        height:38em;
+    }
+
+    .navbar-bottom {
+        display: block;
+        z-index: 999;
+    }
+
+    .main {
+        width:100%;
+        height:calc(100% - 60px);
+        top: 50px;
+        left: 0;
+    }
+
+    .case-overview2 {
+        display: none;
+    }
+
+    .case-overview1 {
+        height: 5em;
+    }
+    
+    .case-overview2 {
+        height: 5em;
+    }
+    
+    .case-overview-section {
+        height: 5em;
+        background-color:blue;
+    }
+
+    .navbar-bottom-section{
+        height: 5em;
+        text-align: center;
+        color: #fff;
+    }
+
+    .user-box {
+        width: 100px;
+        right:35%;
+    }
+
+    .notification-box {
+        right: 10px;
+    
+    }
+
+    .chatbot-box {
+        right: 60px;
+        
+    }
+
+    .header-nav {
+        width:100%;
+        height: 50px;
+        left: 0;
+    }
+
+}
+
+
+
+
+
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
