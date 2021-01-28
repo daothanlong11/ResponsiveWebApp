@@ -15,6 +15,104 @@ body {
     left: 18.75em;
 }
 
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color:rgba(0,0,0,0.5);
+    z-index: 99;
+    display:none;
+    animation:fadeIn linear 0.2; 
+}
+
+.navbar-bottom-icon {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    color: #2e2c2c;
+    top: 1em;
+    left: 4em;
+    display: none;
+}
+
+.header-noti {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    color: #2e2c2c;   
+    top: 0.5em;
+    left: 0.7em;
+    display: none;
+}
+
+.header-chatbot {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    color: #2e2c2c;   
+    top: 0.5em;
+    left: 0.5em;
+    display: none;
+}
+
+.sidebar-close {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    color: #2e2c2c;   
+    top: 1em;
+    right: 0.6em;
+}
+
+.navbar-status-home {
+    position: relative;
+    top: 0;
+    left: 5px;
+    width: 160px;
+    height: 2px;
+    background-color: #2261df;
+    display: none;
+}
+
+.navbar-status-search {
+    position: relative;
+    top: 0;
+    left: 5px;
+    width: 160px;
+    height: 2px;
+    background-color: #2261df;
+    display: none;
+}
+
+.navbar-status-menu {
+    position: relative;
+    top: 0;
+    left: 5px;
+    width: 160px;
+    height: 2px;
+    background-color: #2261df;
+    display: none;
+
+}
+
+.sidebar__list {
+    margin-top: 24px;
+}
+
+.sidebar__link {
+    text-decoration :none;
+    color: #333;
+    display: block;
+    padding: 8px 0;
+    font: size 1.3em;
+}
+
+.menu-checkbox {
+    display:none;
+}
+
 /* //////////////////////////////////////////////////////////////////////// For PC /////////////////////////////////////////////////////////////////////////////////// */
 
 
@@ -32,7 +130,7 @@ body {
     position: fixed;
     width: 150px;
     height: 40px;
-    background-color: orange;
+    background-color: pink;
     right:20px;
 
 }
@@ -63,7 +161,7 @@ body {
 /* ///////////////////////////////// sidebar //////////////////////////////////// */
 
 .sidebar {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     height: 100%;
@@ -74,11 +172,13 @@ body {
 
 .brand {
     position: absolute;
-    width: 100%;
+    width: 200px;
     height: 60px;
     top: 0;
     left: 0;
-    background-color:#3a3f49;
+    background-color:#0441bd;
+    color: #fff;
+    z-index: 999;
 }
 
 .navbar-bottom {
@@ -87,8 +187,14 @@ body {
     left: 0;
     height: 5em;
     width: 100%;
-    background-color: #353a44 ;
+    background-color: #f5f5f5 ;
     display: none;
+}
+
+.sidebar-content {
+    position: absolute;
+    top: 60px;
+    left: 0;
 }
 
 
@@ -166,10 +272,28 @@ body {
 
 /* //////////////////////////////////////////////////// For SmartPhone ///////////////////////////////////////////////////////////////////// */
 
+@keyframes fadeIn {
+    from { opacity:0;}
+    to { opacity:1;}
+}
+
 @media (max-width:739px) {
     .sidebar {
         display: none;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: auto;
+        right: 0px;
+        width: 300px;
+        height: 100%;
+        display: block;
+        z-index: 999;
+        background-color:#fff;
+        transform: translateX(100%);
+        transition: transform linear 0.2s;
     }
+
 
     .content2 {
         display: none;
@@ -182,6 +306,12 @@ body {
     .navbar-bottom {
         display: block;
         z-index: 999;
+    }
+
+    .user-box {
+       position: absolute;
+       top: 1em;
+       left: 1em;
     }
 
     .main {
@@ -234,6 +364,31 @@ body {
         height: 50px;
         left: 0;
     }
+
+
+    .navbar-bottom-icon {
+   
+        display: block;
+    }
+
+    .header-noti {
+  
+        display: block;
+    }
+
+    .header-chatbot {
+      
+        display: block;
+    }
+
+    .brand {
+        top: 0;
+        left: 9.375em;
+        height: 50px;
+    }
+
+   
+
 
 }
 
