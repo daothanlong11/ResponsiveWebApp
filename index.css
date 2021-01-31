@@ -1,5 +1,6 @@
 body {
-    margin: 0
+    margin: 0;
+    background-color:#dfdfdf;
 }
 
 * {
@@ -33,8 +34,12 @@ body {
     height: 30px;
     color: #2e2c2c;
     top: 1em;
-    left: 4em;
+    left: 2.7em;
     display: none;
+}
+
+.navbar-bottom-background {
+    background-color: #ffffff !important;
 }
 
 .header-noti {
@@ -119,7 +124,7 @@ body {
 /* ////////////////////////////////// header ////////////////////////////////// */
 .header-nav {
     position: fixed;
-    background-color:#e6e5e5;
+    background-color:#ffffff;
     top: 0;
     left: 300px;
     height: 60px;
@@ -187,7 +192,7 @@ body {
     left: 0;
     height: 5em;
     width: 100%;
-    background-color: #f5f5f5 ;
+    background-color: #ffffff ;
     display: none;
 }
 
@@ -205,19 +210,31 @@ body {
 
 
 .case-overview1 {
-    height: 7.5em;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+    height: 7em;
+    background-clip: content-box;
 }
 
 .case-overview2 {
-    height: 7.5em;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+    height: 7em;
+    background-clip: content-box;
 }
 
 .case-overview-section {
-    height: 7.5em;
+    padding-top: 0.05em;
+    padding-bottom: 0.3em;
+    height: 7em;
+    background-clip: content-box;
     background-color:blue;
 }
 
 .content1 {
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+    background-clip: content-box;
     height: 56em;
     background-color:red;
     display: block;
@@ -336,6 +353,7 @@ body {
     .case-overview-section {
         height: 5em;
         background-color:blue;
+        
     }
 
     .navbar-bottom-section{
@@ -382,8 +400,9 @@ body {
     }
 
     .brand {
+        position: fixed;
         top: 0;
-        left: 9.375em;
+        left: 8.5em;
         height: 50px;
     }
 
