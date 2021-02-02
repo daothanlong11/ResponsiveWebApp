@@ -36,6 +36,7 @@ body {
     top: 1em;
     left: 2.7em;
     display: none;
+    cursor: pointer;
 }
 
 .navbar-bottom-background {
@@ -69,6 +70,7 @@ body {
     color: #2e2c2c;   
     top: 1em;
     right: 0.6em;
+    cursor: pointer;
 }
 
 .navbar-status-home {
@@ -95,7 +97,29 @@ body {
     position: relative;
     top: 0;
     left: 5px;
-    width: 160px;
+    width: 100px;
+    height: 2px;
+    background-color: #2261df;
+    display: none;
+
+}
+
+.navbar-status-home {
+    position: relative;
+    top: 0;
+    left: 5px;
+    width: 100px;
+    height: 2px;
+    background-color: #2261df;
+    display: none;
+
+}
+
+.navbar-status-search {
+    position: relative;
+    top: 0;
+    left: 5px;
+    width: 100px;
     height: 2px;
     background-color: #2261df;
     display: none;
@@ -112,11 +136,127 @@ body {
     display: block;
     padding: 8px 0;
     font: size 1.3em;
+    font-weight: bold;
+    position: relative;
+    left: 1em;
+}
+
+.sidebar__link-2 {
+    text-decoration :none;
+    color: #333;
+    display: block;
+    padding: 8px 0;
+    font: size 1.3em;
+    position: relative;
+    left: 1em;
+    left: 2em;
+}
+
+.sidebar-item {
+    position: relative;
+    left: 1em;
+    width: 220px;
+    border-radius: 10px;
+}
+
+.sidebar-item:hover {
+    background-color:#d8d8d8;
 }
 
 .menu-checkbox {
     display:none;
 }
+
+.search-checkbox {
+    display:none;
+}
+
+.home-checkbox {
+    display:none;
+}
+
+.case-overview-sec {
+    height:4.5em;
+    background-color: white;
+}
+
+.vietnam-flag {
+    position: absolute;
+    left: -5px;
+    top: 1.6em;
+}
+
+.vietnam-label {
+    position: absolute;
+    font-size: 0.8em;
+    left: 50px;
+    top: 2.5em;
+    font-weight: bold;
+}
+
+.border-right {
+    position: relative;
+    top: 0.5em;
+    left: 6.5em;
+    width: 1px;
+    height: 80%;
+    border-right: 1px solid rgb(182, 182, 182);
+}
+
+.border-2 {
+    top: -2em;
+}
+
+.case-overview-label {
+    display: inline;
+    position: relative;
+    font-size: 0.8em;
+    top: 1.5em;
+    left: 1em;
+    font-weight: bold;
+    z-index: 1;
+}
+
+.case-overview-value {
+    display: inline;
+    position: relative;
+    font-size: 0.8em;
+    top: 1.5em;
+    left: 1em;
+}
+
+.value-2 {
+    position: relative;
+    top:1.5em;
+    left: 1em;
+}
+
+.search-box {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    font-size: 14px;
+    padding: 12px 20px 12px 40px;
+    margin-bottom: 12px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border:1px;
+    border-style: solid;
+    border-color: #979797;
+    background-color: #ebebeb;
+  }
+
+  .search-icon {
+      position: absolute;
+      top: 17px;
+      left: 15px;
+      width: 50px;
+      height: 50px;
+      z-index: 10;
+  }
+
 
 /* //////////////////////////////////////////////////////////////////////// For PC /////////////////////////////////////////////////////////////////////////////////// */
 
@@ -135,17 +275,26 @@ body {
     position: fixed;
     width: 150px;
     height: 40px;
-    background-color: pink;
+    background-color: transparent;
     right:20px;
 
+}
+
+.user-name {
+    position: relative;
+    top: -2em;
+    left: 3em;
+    font-weight: bold;
 }
 
 .notification-box {
     position :fixed;
     width: 40px;
     height:40px;
-    background-color:orange;
+    top: 0.4em;
+    background-color:transparent;
     right: 200px;
+    cursor: pointer;
     
 }
 
@@ -153,11 +302,11 @@ body {
     position :fixed;
     width: 40px;
     height:40px;
-    background-color:orange;
+    top: 0.4em;
+    background-color:transparent;
     right: 270px;
-    
+    cursor: pointer;
 }
-
 
 
 /* /////////////////////////////////////////////////////////////////////////////////// */
@@ -181,9 +330,13 @@ body {
     height: 60px;
     top: 0;
     left: 0;
-    background-color:#0441bd;
-    color: #fff;
+    background-color:transparent;
     z-index: 999;
+}
+
+.brand-image {
+    position: absolute;
+    left: 25px;
 }
 
 .navbar-bottom {
@@ -209,43 +362,50 @@ body {
 /* ///////////////////////////////// main //////////////////////////////////// */
 
 
-.case-overview1 {
+.case-overview {
     padding-top: 0.25em;
-    padding-bottom: 0.25em;
     height: 7em;
     background-clip: content-box;
 }
 
-.case-overview2 {
-    padding-top: 0.25em;
-    padding-bottom: 0.25em;
-    height: 7em;
-    background-clip: content-box;
-}
 
-.case-overview-section {
-    padding-top: 0.05em;
-    padding-bottom: 0.3em;
+.case-overview-sections {
     height: 7em;
     background-clip: content-box;
-    background-color:blue;
+    background-color:transparent;
 }
 
 .content1 {
-    padding-top: 0.25em;
-    padding-bottom: 0.25em;
+    padding-top: 0em;
     background-clip: content-box;
     height: 56em;
-    background-color:red;
+    background-color:transparent;
     display: block;
+    z-index: 1;
 }
 
 
 .content2 {
+    position:absolute;
+    top:0.25em;
+    left: 0;
+    width: 100%;
     height: 56em;
-    background-color:red;
+    background-color:white;
     display: block;
+    z-index: 100;
 }
+
+.p-value {
+    position: relative;
+    left: 100px;
+}
+
+#map {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
 
 
 /* .map {
@@ -302,7 +462,7 @@ body {
         bottom: 0;
         left: auto;
         right: 0px;
-        width: 300px;
+        width: 250px;
         height: 100%;
         display: block;
         z-index: 999;
@@ -314,6 +474,12 @@ body {
 
     .content2 {
         display: none;
+        width: 100%;
+        height: calc(100% - 70px);
+    }
+
+    .content2-display {
+        display: block;
     }
 
     .content1 {
@@ -338,21 +504,16 @@ body {
         left: 0;
     }
 
-    .case-overview2 {
-        display: none;
-    }
+  
 
-    .case-overview1 {
+    .case-overview {
         height: 5em;
     }
     
-    .case-overview2 {
-        height: 5em;
-    }
-    
-    .case-overview-section {
-        height: 5em;
-        background-color:blue;
+
+    .case-overview-sections {
+        height: 4.5em;
+        background-color:white;
         
     }
 
