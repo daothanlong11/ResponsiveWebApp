@@ -97,6 +97,13 @@ iframe {
   height: calc(100% - 70px);
 }
 
+.wrap-table100-location {
+  position: relative;
+  top: 0px;
+  width: 100%;
+  height: calc(100% - 120px);
+}
+
 .table100 {
   overflow: auto;
   height: 100%;
@@ -249,6 +256,23 @@ tbody tr:hover {
   table tbody tr td:nth-child(6):before {
     content: "Vaccines not injected";
   }
+
+  .table-location tbody tr td:nth-child(1):before {
+    content: "Index";
+  }
+  .table-location tbody tr td:nth-child(2):before {
+    content: "City";
+  }
+  .table-location tbody tr td:nth-child(3):before {
+    content: "Address";
+  }
+  .table-location tbody tr td:nth-child(4):before {
+    content: "Working time";
+  }
+  .table-location tbody tr td:nth-child(5):before {
+    content: "Map";
+  }
+ 
 
   .column4,
   .column5,

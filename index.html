@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Web App</title>
+    <title>VACTRAK</title>
 
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="grid.css">
@@ -35,7 +35,7 @@
 <body>
     <div id="header-nav" class="header-nav">
         <div id="user-box" class="user-box">
-            <img class="user-image" src="user.png">
+            <img class="user-image" src="user_icon_small.png">
             <p class="user-name">NoCov</p>
         </div>
         <div class="notification-box">
@@ -58,7 +58,7 @@
     
 
     <div id="sidebar" class="sidebar">
-        <label for="navbar-menu-checkbox"class="sidebar-close">
+        <label for="navbar-menu-checkbox" class="sidebar-close">
             <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" class="svg-inline--fa fa-times fa-w-11" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512"><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg>   
         </label>
         <div class="sidebar-content">         
@@ -68,16 +68,19 @@
                         <a  class="sidebar__link-2">Not register </a>
                     </dt>
                     <dt class="sidebar-item">
-                        <a href="" class="sidebar__link">Profile</a>
+                        <a onclick="openProfile()" class="sidebar__link">Profile</a>
                     </dt>
                     <dt class="sidebar-item">
                         <a href="https://forms.gle/aRyTAm7jWgvS6kqh7" class="sidebar__link">Register for Vaccine</a>
                     </dt>
                     <dt class="sidebar-item">
-                        <a href="" class="sidebar__link">Medical Condition</a>
+                        <a class="sidebar__link">Medical Condition</a>
                     </dt>
                     <dt class="sidebar-item">
-                        <a href="" class="sidebar__link">Vaccine locations</a>
+                        <a onclick="openLocation()" class="sidebar__link">Vaccine Locations</a>
+                    </dt>
+                    <dt class="sidebar-item">
+                        <a onclick="openInformation()" class="sidebar__link">Vaccine Information</a>
                     </dt>
                     <dt class="sidebar-item">
                         <a href="" class="sidebar__link">Sign out</a>
@@ -130,21 +133,21 @@
                             <div class="row">
                                 <div class="case-overview-sec col c-3">
                                     <img class="vietnam-flag" src="vietnam.png">
-                                    <p class="vietnam-label">Việt Nam</p>
+                                    <p class="vietnam-label">Viet Nam</p>
                                     <div class="border-right"></div>
                                 </div> 
                                 <div class="case-overview-sec col c-3">
-                                    <p class="case-overview-label">Tổng ca nhiễm</p>
-                                    <p class="case-overview-value">1.817</p>
+                                    <p class="case-overview-label">Total cases</p>
+                                    <p class="case-overview-value">1.882</p>
                                     <div class="border-right border-2"></div>
                                 </div>
                                 <div class="case-overview-sec col c-3">
-                                    <p class="case-overview-label">Đã bình phục</p>
-                                    <p class="case-overview-value">1.457</p>
+                                    <p class="case-overview-label">Recovered</p>
+                                    <p class="case-overview-value">1.460</p>
                                     <div class="border-right border-2"></div>
                                 </div>
                                 <div class="case-overview-sec col c-3">
-                                    <p class="case-overview-label">Số ca tử vong</p>
+                                    <p class="case-overview-label">Deaths</p>
                                     <p class="case-overview-value value-2">35</p>
                                 </div>
                             </div>
@@ -156,8 +159,31 @@
             <div class="row">
                 <div class="content1 col l-7 c-12">
                     <div class="map" id="map"></div>
+
+                    <div class="map-info">                     
+                            <div class="map-info-content1">
+                                <span class="dot1"></span>
+                                <p class="map-info-value">0-20%</p>
+                            </div>
+                            <div class="map-info-content2">
+                                <span class="dot2"></span>
+                                <p class="map-info-value">20-40%</p>
+                            </div>
+                            <div class="map-info-content3">
+                                <span class="dot3"></span>
+                                <p class="map-info-value">40-60%</p>
+                            </div>
+                            <div class="map-info-content4">
+                                <span class="dot4"></span>
+                                <p class="map-info-value">60-80%</p>
+                            </div>
+                            <div class="map-info-content5">
+                                <span class="dot5"></span>
+                                <p class="map-info-value">80-100%</p>
+                            </div>
+                    </div>
                 </div>
-"
+
                 <div id="content2" class="content2 col l-5 c-12">
                     <i class="search-icon fa fa-search"></i>
                     <input class="search-box fas fa-search" type="text" id="search-box" onkeyup="searchbox()" placeholder="Search for city.." title="Type in a city name">
@@ -177,115 +203,59 @@
                                 <tbody id="myTableBody">
                                         <tr>
                                             <td class="column1"><p class="p-value">1</p></td>
-                                            <td class="column2"><p class="p-value">ho chi minh</p></td>
-                                            <td class="column3"><p class="p-value">3</p></td>
-                                            <td class="column4"><p class="p-value">4</p></td>
-                                            <td class="column5"><p class="p-value">5</p></td>
-                                            <td class="column6"><p class="p-value">6</p></td>
+                                            <td class="column2"><p class="p-value">Ho Chi Minh</p></td>
+                                            <td class="column3"><p class="p-value">Activated</p></td>
+                                            <td class="column4"><p class="p-value">2.000.000</p></td>
+                                            <td class="column5"><p class="p-value">1.500.000</p></td>
+                                            <td class="column6"><p class="p-value">500.000</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="column1"><p class="p-value">2</p></td>
+                                            <td class="column2"><p class="p-value">Ha Noi</p></td>
+                                            <td class="column3"><p class="p-value">Activated</p></td>
+                                            <td class="column4"><p class="p-value">1.000.000</p></td>
+                                            <td class="column5"><p class="p-value">800.000</p></td>
+                                            <td class="column6"><p class="p-value">200.000</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="column1"><p class="p-value">3</p></td>
+                                            <td class="column2"><p class="p-value">Quang Ninh</p></td>
+                                            <td class="column3"><p class="p-value">Activated</p></td>
+                                            <td class="column4"><p class="p-value">1.000.000</p></td>
+                                            <td class="column5"><p class="p-value">700.000</p></td>
+                                            <td class="column6"><p class="p-value">300.000</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="column1"><p class="p-value">4</p></td>
+                                            <td class="column2"><p class="p-value">Nghe An</p></td>
+                                            <td class="column3"><p class="p-value">Activated</p></td>
+                                            <td class="column4"><p class="p-value">1.000.000</p></td>
+                                            <td class="column5"><p class="p-value">600.000</p></td>
+                                            <td class="column6"><p class="p-value">400.000</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="column1"><p class="p-value">5</p></td>
+                                            <td class="column2"><p class="p-value">Da Nang</p></td>
+                                            <td class="column3"><p class="p-value">Activated</p></td>
+                                            <td class="column4"><p class="p-value">1.000.000</p></td>
+                                            <td class="column5"><p class="p-value">900.000</p></td>
+                                            <td class="column6"><p class="p-value">100.000</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="column1"><p class="p-value">6</p></td>
+                                            <td class="column2"><p class="p-value">Dak Lak</p></td>
+                                            <td class="column3"><p class="p-value">Activated</p></td>
+                                            <td class="column4"><p class="p-value">5.000.000</p></td>
+                                            <td class="column5"><p class="p-value">300.000</p></td>
+                                            <td class="column6"><p class="p-value">200.000</p></td>
                                         </tr>
                                         <tr>
                                             <td class="column1"><p class="p-value">7</p></td>
-                                            <td class="column2"><p class="p-value">ha noi</p></td>
-                                            <td class="column3"><p class="p-value">9</p></td>
-                                            <td class="column4"><p class="p-value">10</p></td>
-                                            <td class="column5"><p class="p-value">11</p></td>
-                                            <td class="column6"><p class="p-value">12</p></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="column1">2017-09-26 05:57</td>
-                                            <td class="column2">200396</td>
-                                            <td class="column3">Game Console Controller</td>
-                                            <td class="column4">$22.00</td>
-                                            <td class="column5">2</td>
-                                            <td class="column6">$44.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="column1">2017-09-25 23:06</td>
-                                            <td class="column2">200392</td>
-                                            <td class="column3">USB 3.0 Cable</td>
-                                            <td class="column4">$10.00</td>
-                                            <td class="column5">3</td>
-                                            <td class="column6">$30.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="column1">2017-09-24 05:57</td>
-                                            <td class="column2">200391</td>
-                                            <td class="column3">Smartwatch 4.0 LTE Wifi</td>
-                                            <td class="column4">$199.00</td>
-                                            <td class="column5">6</td>
-                                            <td class="column6">$1494.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="column1">2017-09-23 05:57</td>
-                                            <td class="column2">200390</td>
-                                            <td class="column3">Camera C430W 4k</td>
-                                            <td class="column4">$699.00</td>
-                                            <td class="column5">1</td>
-                                            <td class="column6">$699.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="column1">2017-09-22 05:57</td>
-                                            <td class="column2">200389</td>
-                                            <td class="column3">Macbook Pro Retina 2017</td>
-                                            <td class="column4">$2199.00</td>
-                                            <td class="column5">1</td>
-                                            <td class="column6">$2199.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="column1">2017-09-21 05:57</td>
-                                            <td class="column2">200388</td>
-                                            <td class="column3">Game Console Controller</td>
-                                            <td class="column4">$999.00</td>
-                                            <td class="column5">1</td>
-                                            <td class="column6">$999.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="column1">2017-09-19 05:57</td>
-                                            <td class="column2">200387</td>
-                                            <td class="column3">iPhone X 64Gb Grey</td>
-                                            <td class="column4">$999.00</td>
-                                            <td class="column5">1</td>
-                                            <td class="column6">$999.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="column1">2017-09-18 05:57</td>
-                                            <td class="column2">200386</td>
-                                            <td class="column3">iPhone X 64Gb Grey</td>
-                                            <td class="column4">$999.00</td>
-                                            <td class="column5">1</td>
-                                            <td class="column6">$999.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="column1">2017-09-22 05:57</td>
-                                            <td class="column2">200389</td>
-                                            <td class="column3">Macbook Pro Retina 2017</td>
-                                            <td class="column4">$2199.00</td>
-                                            <td class="column5">1</td>
-                                            <td class="column6">$2199.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="column1">2017-09-21 05:57</td>
-                                            <td class="column2">200388</td>
-                                            <td class="column3">Game Console Controller</td>
-                                            <td class="column4">$999.00</td>
-                                            <td class="column5">1</td>
-                                            <td class="column6">$999.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="column1">2017-09-19 05:57</td>
-                                            <td class="column2">200387</td>
-                                            <td class="column3">iPhone X 64Gb Grey</td>
-                                            <td class="column4">$999.00</td>
-                                            <td class="column5">1</td>
-                                            <td class="column6">$999.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="column1">2017-09-18 05:57</td>
-                                            <td class="column2">200386</td>
-                                            <td class="column3">iPhone X 64Gb Grey</td>
-                                            <td class="column4">$999.00</td>
-                                            <td class="column5">1</td>
-                                            <td class="column6">$999.00</td>
+                                            <td class="column2"><p class="p-value">Ca Mau</p></td>
+                                            <td class="column3"><p class="p-value">Activated</p></td>
+                                            <td class="column4"><p class="p-value">1.000.000</p></td>
+                                            <td class="column5"><p class="p-value">500.000</p></td>
+                                            <td class="column6"><p class="p-value">500.000</p></td>
                                         </tr>
                                         
                                 </tbody>
@@ -293,11 +263,176 @@
                         </div>
                     </div>
                 </div>
+
+                <div id="profile-tab" class="profile-tab col c-12">
+                    <div class="profile-tab-content1">
+                        
+                        <div class="profile-tab-content1-user">
+                            <div class="profile-tab-content1-user-image">
+                                <img class="profile-user-image" src="user_icon.png">
+                                <p id="profile-tab-content1-user-name" class="profile-tab-content1-user-name">NoCov</p>
+                                <p id="profile-tab-content1-user-age" class="profile-tab-content1-user-age">Age: 22</p>
+                                <p id="profile-tab-content1-user-sex" class="profile-tab-content1-user-sex">Gender: Male</p>
+                            </div>
+
+                            <div class="profile-content1-line"></div>
+
+                            <div class="profile-tab-content1-user-qrcode">
+                                <p class="profile-tab-content1-qrcode-title">User Identification QrCode</p>
+                                <img class="profile-qrcode-image" src="qrcode_small.jpg">
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="profile-tab-content2">
+                        <div class="profile-tab-content2-info">
+                            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="phone" class="content2-icon svg-inline--fa fa-phone fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z"></path></svg>
+                            <p id="profile-tab-content2-user-phone" class="profile-tab-content2-user-info">Phone Number: +845555666</p>
+                        </div>
+
+                        <div class="profile-tab-content2-info">
+                            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user-md" class="content2-icon svg-inline--fa fa-user-md fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zM104 424c0 13.3 10.7 24 24 24s24-10.7 24-24-10.7-24-24-24-24 10.7-24 24zm216-135.4v49c36.5 7.4 64 39.8 64 78.4v41.7c0 7.6-5.4 14.2-12.9 15.7l-32.2 6.4c-4.3.9-8.5-1.9-9.4-6.3l-3.1-15.7c-.9-4.3 1.9-8.6 6.3-9.4l19.3-3.9V416c0-62.8-96-65.1-96 1.9v26.7l19.3 3.9c4.3.9 7.1 5.1 6.3 9.4l-3.1 15.7c-.9 4.3-5.1 7.1-9.4 6.3l-31.2-4.2c-7.9-1.1-13.8-7.8-13.8-15.9V416c0-38.6 27.5-70.9 64-78.4v-45.2c-2.2.7-4.4 1.1-6.6 1.9-18 6.3-37.3 9.8-57.4 9.8s-39.4-3.5-57.4-9.8c-7.4-2.6-14.9-4.2-22.6-5.2v81.6c23.1 6.9 40 28.1 40 53.4 0 30.9-25.1 56-56 56s-56-25.1-56-56c0-25.3 16.9-46.5 40-53.4v-80.4C48.5 301 0 355.8 0 422.4v44.8C0 491.9 20.1 512 44.8 512h358.4c24.7 0 44.8-20.1 44.8-44.8v-44.8c0-72-56.8-130.3-128-133.8z"></path></svg>
+                            <p id="profile-tab-content2-user-email" class="profile-tab-content2-user-info">Job: Undefined</p>
+                        </div>
+
+                        <div class="profile-tab-content2-info">
+                            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="home" class="content2-icon svg-inline--fa fa-home fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"></path></svg>
+                            <p id="profile-tab-content2-user-address" class="profile-tab-content2-user-info">Address: Under Sai Gon bridge</p>
+                        </div>
+
+                        <div class="profile-tab-content2-info">
+                            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="calendar-alt" class="content2-icon svg-inline--fa fa-calendar-alt fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192H0v272zm320-196c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM192 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM64 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zM400 64h-48V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H160V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48z"></path></svg>
+                            <p id="profile-tab-content2-user-birthday" class="profile-tab-content2-user-info">Date of birth: 31/02/2021</p>
+                        </div>                      
+                    </div>
+
+                    <button onclick="updateProfile()" class="update-profile-btn">
+                        <span>Update</span>
+                    </button>
+
+                    <button onclick="closeProfile()" class="close-profile-btn">
+                        <span>Close</span>
+                    </button>
+                </div>
+
+                <div id="vaccine-location-tab" class="vaccine-location-tab col l-5 c-12">
+                    <i class="search-icon fa fa-search"></i>
+                    <input class="search-box-location fas fa-search" type="text" id="search-box-location" onkeyup="searchbox_location()" placeholder="Search vaccine location in city..Type a city name" title="Type a city name">
+                    <div class="wrap-table100-location">
+                        <div class="table100 table-location">
+                            <table>
+                                <thead>
+                                    <tr class="table100-head">
+                                        <th class="column1 vaccine-location-content1">Index</th>
+                                        <th class="column2 vaccine-location-content2">City</th>
+                                        <th class="column3 vaccine-location-content3">Address</th>
+                                        <th class="column4 vaccine-location-content4">Working times</th>
+                                        <th class="column5 vaccine-location-content5">Directions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="myTableBody-location">
+                                        <tr>
+                                            <td class="column1"><p class="p-value-2 ">1</p></td>
+                                            <td class="column2"><p class="p-value-2 ">Ho Chi Minh</p></td>
+                                            <td class="column3"><p class="p-value-2 ">Ham Nghi Street, District 1</p></td>
+                                            <td class="column4"><p class="p-value-2 ">8 am - 5 pm</p></td>
+                                            <td class="column5"><a href="https://www.google.com/maps/place/H%C3%A0m+Nghi,+Nguy%E1%BB%85n+Th%C3%A1i+B%C3%ACnh,+Qu%E1%BA%ADn+1,+Th%C3%A0nh+ph%E1%BB%91+H%E1%BB%93+Ch%C3%AD+Minh,+Vietnam/@10.7708653,106.7003073,17z/data=!3m1!4b1!4m5!3m4!1s0x31752f3f6eada8af:0x2a8c618eb1dd4588!8m2!3d10.7708653!4d106.7025013" target="_blank"><p class="p-value-2 ">click here</p></a></td>    
+                                        </tr>
+                                        <tr>
+                                            <td class="column1"><p class="p-value-2 ">2</p></td>
+                                            <td class="column2"><p class="p-value-2 ">Ha noi</p></td>
+                                            <td class="column3"><p class="p-value-2 ">Ham Nghi Street, District 1</p></td>
+                                            <td class="column4"><p class="p-value-2 ">8 am - 5 pm</p></td>
+                                            <td class="column5"><a href="https://www.google.com/maps/place/H%C3%A0m+Nghi,+Nguy%E1%BB%85n+Th%C3%A1i+B%C3%ACnh,+Qu%E1%BA%ADn+1,+Th%C3%A0nh+ph%E1%BB%91+H%E1%BB%93+Ch%C3%AD+Minh,+Vietnam/@10.7708653,106.7003073,17z/data=!3m1!4b1!4m5!3m4!1s0x31752f3f6eada8af:0x2a8c618eb1dd4588!8m2!3d10.7708653!4d106.7025013" target="_blank"><p class="p-value-2 ">click here</p></a></td>    
+                                        </tr>
+                                        <tr>
+                                            <td class="column1"><p class="p-value-2 ">3</p></td>
+                                            <td class="column2"><p class="p-value-2 ">Quang Ninh</p></td>
+                                            <td class="column3"><p class="p-value-2 ">Ham Nghi Street, District 1</p></td>
+                                            <td class="column4"><p class="p-value-2 ">8 am - 5 pm</p></td>
+                                            <td class="column5"><a href=""><p class="p-value-2 ">click here</p></a></td>    
+                                        </tr>
+                                        <tr>
+                                            <td class="column1"><p class="p-value-2 ">4</p></td>
+                                            <td class="column2"><p class="p-value-2 ">Nghe An</p></td>
+                                            <td class="column3"><p class="p-value-2 ">Ham Nghi Street, District 1</p></td>
+                                            <td class="column4"><p class="p-value-2 ">8 am - 5 pm</p></td>
+                                            <td class="column5"><a href=""><p class="p-value-2 ">click here</p></a></td>    
+                                        </tr>
+                                        <tr>
+                                            <td class="column1"><p class="p-value-2 ">5</p></td>
+                                            <td class="column2"><p class="p-value-2 ">Da Nang</p></td>
+                                            <td class="column3"><p class="p-value-2 ">Ham Nghi Street, District 1</p></td>
+                                            <td class="column4"><p class="p-value-2 ">8 am - 5 pm</p></td>
+                                            <td class="column5"><a href=""><p class="p-value-2 ">click here</p></a></td>    
+                                        </tr>
+                                        <tr>
+                                            <td class="column1"><p class="p-value-2 ">6</p></td>
+                                            <td class="column2"><p class="p-value-2 ">Dak Lak</p></td>
+                                            <td class="column3"><p class="p-value-2 ">Ham Nghi Street, District 1</p></td>
+                                            <td class="column4"><p class="p-value-2 ">8 am - 5 pm</p></td>
+                                            <td class="column5"><a href=""><p class="p-value-2 ">click here</p></a></td>    
+                                        </tr>
+                                        <tr>
+                                            <td class="column1"><p class="p-value-2 ">7</p></td>
+                                            <td class="column2"><p class="p-value-2 ">Ca Mau</p></td>
+                                            <td class="column3"><p class="p-value-2 ">Ham Nghi Street, District 1</p></td>
+                                            <td class="column4"><p class="p-value-2 ">8 am - 5 pm</p></td>
+                                            <td class="column5"><a href=""><p class="p-value-2 ">click here</p></a></td>    
+                                        </tr>
+                                        
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <button onclick="closeLocation()" class="close-location-btn">
+                        <span>Close</span>
+                    </button>
+                </div>
+
+                <div id="information-tab" class="information-tab col c-12">
+                    <label for="information-tab-checkbox" class="info-close">
+                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" class="svg-inline--fa fa-times fa-w-11" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512"><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg>   
+                    </label>
+                    <input type="checkbox" name="" class="info-checkbox" id="information-tab-checkbox" onclick="info_check()">
+                    <h4 class="information-title">Vaccine Information</h4>
+                    <div class="information-content">
+                        <p class="question">Can a COVID-19 vaccine make me sick with COVID-19?</p>
+                        <p class="answer">No. None of the authorized and recommended COVID-19 vaccines or COVID-19 vaccines currently in development in the United States contain the live virus that causes COVID-19. This means that a COVID-19 vaccine cannot make you sick with COVID-19.
+                            There are several different types of vaccines in development. All of them teach our immune systems how to recognize and fight the virus that causes COVID-19. Sometimes this process can cause symptoms, such as fever. These symptoms are normal and are a sign that the body is building protection against the virus that causes COVID-19. Learn more about how COVID-19 vaccines work.                       
+                            It typically takes a few weeks for the body to build immunity (protection against the virus that causes COVID-19) after vaccination. That means it’s possible a person could be infected with the virus that causes COVID-19 just before or just after vaccination and still get sick. This is because the vaccine has not had enough time to provide protection.</p>
+                        
+                        <p class="question">After getting a COVID-19 vaccine, will I test positive for COVID-19 on a viral test?</p>
+                        <p class="answer">No. Neither the recently authorized and recommended vaccines nor the other COVID-19 vaccines currently in clinical trials in the United States can cause you to test positive on viral tests, which are used to see if you have a current infection.​
+                            If your body develops an immune response—the goal of vaccination—there is a possibility you may test positive on some antibody tests. Antibody tests indicate you had a previous infection and that you may have some level of protection against the virus. Experts are currently looking at how COVID-19 vaccination may affect antibody testing results.</p>
+
+                        <p class="question">Will a COVID-19 vaccination protect me from getting sick with COVID-19?</p>
+                        <p class="answer">Yes. COVID-19 vaccination works by teaching your immune system how to recognize and fight the virus that causes COVID-19, and this protects you from getting sick with COVID-19.
+                            Being protected from getting sick is important because even though many people with COVID-19 have only a mild illness, others may get a severe illness, have long-term health effects, or even die. There is no way to know how COVID-19 will affect you, even if you don’t have an increased risk of developing severe complications. Learn more about how COVID-19 vaccines work.</p>
+
+                        <p class="question">Will a COVID-19 vaccine alter my DNA?</p>
+                        <p class="answer">No. COVID-19 mRNA vaccines do not change or interact with your DNA in any way.
+                            Messenger RNA vaccines—also called mRNA vaccines—are the first COVID-19 vaccines authorized for use in the United States. mRNA vaccines teach our cells how to make a protein that triggers an immune response. The mRNA from a COVID-19 vaccine never enters the nucleus of the cell, which is where our DNA is kept. This means the mRNA cannot affect or interact with our DNA in any way. Instead, COVID-19 mRNA vaccines work with the body’s natural defenses to safely develop immunity to disease. Learn more about how COVID-19 mRNA vaccines work. ​                      
+                            At the end of the process, our bodies have learned how to protect against future infection. That immune response and making antibodies is what protects us from getting infected if the real virus enters our bodies.</p>
+
+                        <p class="question">If I have already had COVID-19 and recovered, do I still need to get vaccinated with a COVID-19 vaccine?</p>
+                        <p class="answer">Yes. Due to the severe health risks associated with COVID-19 and the fact that re-infection with COVID-19 is possible, vaccine should be offered to you regardless of whether you already had 
+                            COVID-19 infection. CDC is providing recommendations to federal, state, and local governments about who should be vaccinated first.
+                            At this time, experts do not know how long someone is protected from getting sick again after recovering from COVID-19. The immunity someone gains from having an infection, called natural immunity, varies from person to person. Some early evidence suggests natural immunity may not 
+                            last very long.We won’t know how long immunity produced by vaccination lasts until we have more data on how well the vaccines work.
+                            Both natural immunity and vaccine-induced immunity are important aspects of COVID-19 that experts are trying to learn more about, and CDC will keep the public informed as new evidence becomes available.</p>
+
+                        <p class="question">Is it safe for me to get a COVID-19 vaccine if I would like to have a baby one day?</p>
+                        <p class="answer">Yes. People who want to get pregnant in the future may receive the COVID-19 vaccine.
+                            Based on current knowledge, experts believe that COVID-19 vaccines are unlikely to pose a risk to a person trying to become pregnant in the short or long term. Scientists study every vaccine carefully for side effects immediately and for years afterward.  The COVID-19 vaccines are being studied carefully now and will continue to be studied for many years, similar to other vaccines.                     
+                            The COVID-19 vaccine, like other vaccines, works by training our bodies to develop antibodies to fight against the virus that causes COVID-19, to prevent future illness. There is currently no evidence that antibodies formed from COVID-19 vaccination cause any problems with pregnancy, including the development of the placenta. In addition, there is no evidence suggesting that fertility problems are a side effect of ANY vaccine. People who are trying to become pregnant now or who plan to try in the future may receive the COVID-19 vaccine when it becomes available to them.</p>
+                    </div>
+                    
+                </div>
             </div>
     
-            <!-- <div class="map"></div>
-            <div class="search-city-box"></div>
-            <div class="new-box"></div> -->
+           
         </div>
 
      
@@ -306,12 +441,14 @@
 
     <script>
 
-        
+        var menu_checked = document.getElementById("navbar-menu-checkbox");
        
         window.onload = function () {
             var home_status = document.getElementById("navbar-status-home"); 
             var search_status = document.getElementById("navbar-status-search"); 
             var menu_status = document.getElementById("navbar-status-menu");
+            
+            menu_checked.checked == false;
             
             if (window.innerWidth < 740) {
                 var home_status = document.getElementById("navbar-status-home");
@@ -322,27 +459,31 @@
             }
         }
 
+        function info_check() {
+            var info_check = document.getElementById("information-tab-checkbox");
+            var info_tab = document.getElementById("information-tab")
+            if (info_check.checked == true) {
+                info_tab.style.display = "none";
+                info_check.checked == false;             
+            }
+        }
+
         function menu_check() {
-            var menu_check = document.getElementById("navbar-menu-checkbox");
+            //var menu_checked = document.getElementById("navbar-menu-checkbox");
             var overlay = document.getElementById("overlay");
             var home_status = document.getElementById("navbar-status-home"); 
             var search_status = document.getElementById("navbar-status-search"); 
             var menu_status = document.getElementById("navbar-status-menu");
-            if (menu_check.checked == true) {
+            if (menu_checked.checked == true) {
                 sidebar.style.transform = "translateX(0%)";
-                overlay.style.display = "block";
-                
-
-                // home_status.style.display = "none";
-                // search_status.style.display = "none";
-                // menu_status.style.display = "block";
+                overlay.style.display = "block"; 
+                             
             }
             else {
                 sidebar.style.transform = "translateX(100%)";
                 overlay.style.display = "none";
+                
             }
-            
-
         }
 
         function search_check() {
@@ -400,8 +541,62 @@
                 }
                 }       
             }
-      }
+        }
 
+        function searchbox_location() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("search-box-location");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTableBody-location");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[1];
+                if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+                }       
+            }
+        }
+
+        function closeProfile() {     
+            var profile_tab = document.getElementById("profile-tab");
+            profile_tab.style.display = "none";
+            //var menu_checked = document.getElementById("navbar-menu-checkbox");
+            menu_checked.checked = false;
+            
+        }
+
+        function openProfile() {
+            var profile_tab = document.getElementById("profile-tab");
+            profile_tab.style.display = "block";
+            sidebar.style.transform = "translateX(100%)";
+                overlay.style.display = "none";
+        }
+
+        function openLocation() {
+            var location_tab = document.getElementById("vaccine-location-tab");
+            location_tab.style.display = "block";
+            sidebar.style.transform = "translateX(100%)";
+                overlay.style.display = "none";
+        }
+
+        function closeLocation() {
+            var location_tab = document.getElementById("vaccine-location-tab");
+            location_tab.style.display = "none";
+            //var menu_checked = document.getElementById("navbar-menu-checkbox");
+            menu_checked.checked = false;
+        }
+
+        function openInformation() {
+            var info_tab = document.getElementById("information-tab");
+            info_tab.style.display = "block";
+            sidebar.style.transform = "translateX(100%)";
+                overlay.style.display = "none";
+        }
 
 
         //////////////////////////////////////////////////////// map //////////////////////////////////////////////////////////////////
@@ -414,7 +609,7 @@
             container: "map",
             zoom: 4.5,
             center: [107.265274, 16.299348],
-            style: 'mapbox://styles/l0511/ckjudx2pf02w019nnejdzbjz1',
+            style: 'mapbox://styles/l0511/ckkofw6ze6nx617nslwa3grxo',
             interactive: true,
         });
 
@@ -424,55 +619,61 @@
         //////////////////////////////////// add module area /////////////////////////////////
 
 
-        map.on("load", function () {
-            map.loadImage('marker.png', function (error,image) {
-                map.addImage('marker', image);
-                map.addSource("places", {
-                type: "geojson",
-                data: geojson,
-                });
-
-                map.addLayer({
-                id: "places",
-                type: "symbol",
-                source: "places",
-                layout: {
-                    'icon-image': 'marker',
-                    'icon-allow-overlap': true
-                },
-                });
-
-                var popup = new mapboxgl.Popup({
-                closeButton: false,
-                closeOnClick: false
-                });
-
-                map.on('mouseenter', 'places', function (e) {
-                // Change the cursor style as a UI indicator.
-                map.getCanvas().style.cursor = 'pointer';
-                
-                var coordinates = e.features[0].geometry.coordinates.slice();
-                var description = e.features[0].properties.description;
-                
-                // Ensure that if the map is zoomed out such that multiple
-                // copies of the feature are visible, the popup appears
-                // over the copy being pointed to.
-                while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-                }
-                
-                // Populate the popup and set its coordinates
-                // based on the feature found.
-                popup.setLngLat(coordinates).setHTML(description).addTo(map);
-                });
-                
-                map.on('mouseleave', 'places', function () {
-                    map.getCanvas().style.cursor = '';
-                    popup.remove();
-                });
-
-            });
+        map.on('load', function () {
+        // Add a source for the state polygons.
+        map.addSource('states', {
+            'type': 'geojson',
+            'data':
+                'thunhapbinhquan.geojson'
         });
+
+        // Add a layer showing the state polygons.
+        map.addLayer({
+            'id': 'states-layer',
+            'type': 'fill',
+            'source': 'states',
+            'paint': {
+                "fill-color": ["get", "color"],
+                'fill-outline-color': 'rgb(255, 0, 0)',
+                "fill-opacity": [
+                    "case",
+                    ["boolean", ["feature-state", "hover"], false],
+                    1,
+                    0.5,
+                ],
+            }
+        });
+
+        map.addLayer({
+          id: "states-outline",
+          type: "line",
+          source: "states",
+          layout: {},
+          paint: {
+            "line-color": 'rgba(0, 0, 0,0.5)',
+            "line-width": 0.7,
+          },
+        });
+
+        // When a click event occurs on a feature in the states layer, open a popup at the
+        // location of the click, with description HTML from its properties.
+        map.on('click', 'states-layer', function (e) {
+            new mapboxgl.Popup()
+                .setLngLat(e.lngLat)
+                .setHTML(`<p>` + e.features[0].properties.Name_VI + `</p> <p>` + e.features[0].properties.vaccine_status + `% vaccinated</p>`)
+                .addTo(map);
+        });
+
+        // Change the cursor to a pointer when the mouse is over the states layer.
+        map.on('mouseenter', 'states-layer', function () {
+            map.getCanvas().style.cursor = 'pointer';
+        });
+
+        // Change it back to a pointer when it leaves.
+        map.on('mouseleave', 'states-layer', function () {
+            map.getCanvas().style.cursor = '';
+        });
+    });
 
         ////////////////////////////////////////////////////////////////////////////////////////////////
 

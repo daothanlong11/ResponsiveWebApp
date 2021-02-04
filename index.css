@@ -73,6 +73,17 @@ body {
     cursor: pointer;
 }
 
+.info-close {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    color: #2e2c2c;   
+    top: 0.4em;
+    right: 1em;
+    cursor: pointer;
+    z-index: 100;
+}
+
 .navbar-status-home {
     position: relative;
     top: 0;
@@ -167,6 +178,10 @@ body {
     display:none;
 }
 
+.info-checkbox {
+    display:none;
+}
+
 .search-checkbox {
     display:none;
 }
@@ -184,12 +199,14 @@ body {
     position: absolute;
     left: -5px;
     top: 1.6em;
+    width: 57px;
+    height:25px;
 }
 
 .vietnam-label {
     position: absolute;
     font-size: 0.8em;
-    left: 50px;
+    left: 46px;
     top: 2.5em;
     font-weight: bold;
 }
@@ -227,8 +244,8 @@ body {
 
 .value-2 {
     position: relative;
-    top:1.5em;
-    left: 1em;
+    top:3em;
+    left: -2em;
 }
 
 .search-box {
@@ -247,6 +264,43 @@ body {
     border-color: #979797;
     background-color: #ebebeb;
   }
+
+  .search-box-location {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    font-size: 14px;
+    padding: 12px 20px 12px 40px;
+    margin-bottom: 12px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border:1px;
+    border-style: solid;
+    border-color: #979797;
+    background-color: #ebebeb;
+}
+
+.vaccine-location-content1 {
+    content: "index" !important;
+}
+
+.vaccine-location-content2 {
+content: "City" !important;
+}
+
+.vaccine-location-content3 {
+    content: "Address" !important;
+}
+
+.vaccine-location-content4 {
+    content: "Working Time" !important;
+}
+
+.vaccine-location-content5:nth-child(5):before {
+    content: "Map" !important;
+}
 
   .search-icon {
       position: absolute;
@@ -396,9 +450,270 @@ body {
     z-index: 100;
 }
 
+.profile-tab {
+    position:absolute;
+    top:0.25em;
+    left: 0;
+    width: 100%;
+    height: 51em;
+    background-color:white;
+    display: none;
+    z-index: 100;
+}
+
+.profile-tab-content1 {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    background-color:transparent;
+}
+
+.profile-tab-content2 {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70%;
+    background-color:transparent;
+}
+
+.profile-tab-content1-user-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: transparent;
+}
+
+.profile-content1-line {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    width: 1px;
+    height: 90%;
+    background-color: black;
+}
+
+.profile-tab-content1-user-qrcode {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    background-color: transparent;
+}
+
+.profile-user-image {
+    position: absolute;
+    top: 10%;
+    left: 30%;
+    width: 40%;
+    height: 40%;
+    object-fit: cover;
+}
+
+.profile-tab-content1-user-name {
+    position: relative;
+    top: 60%;
+    left: center;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.profile-tab-content1-user-age {
+    position: relative;
+    top: 60%;
+    left: center;
+    text-align: center;
+    font-size: 16px;
+}
+
+.profile-tab-content1-user-sex {
+    position: relative;
+    top: 60%;
+    left: center;
+    text-align: center;
+    font-size: 16px;
+}
+
+.profile-qrcode-image {
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    width: 40%;
+    height: 35%;
+    object-fit: cover;
+}
+
+.profile-tab-content1-qrcode-title {
+    position: relative;
+    top: 15%;
+    left: center;
+    text-align: center;
+    font-size: 14px;
+}
+
+.profile-tab-content2-info {
+    position: relative;
+    top: 0%;
+    left: 10%;
+    width: 80%;
+    height: 10%;
+    background-color: transparent;
+}
+
+.content2-icon {
+    position: relative;
+    width: 40%;
+    height: 40%;
+    top: 30%;
+    left: -15%;
+}
+
+.profile-tab-content2-user-info {
+    position: absolute;
+    top: 30%;
+    left: 15%;
+    font-size: 18px;
+}
+
+.update-profile-btn {
+    position: absolute;
+    bottom: 30%;
+    left: 40%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    min-width: 50px;
+    height: 36px;
+    background-color: #548dd8;
+    border-radius: 5px;
+  
+    font-size: 14px;
+    color: #fff;
+    line-height: 1.2;
+    font-weight: bold;
+  }
+
+  .close-profile-btn {
+    position: absolute;
+    bottom: 30%;
+    left: 70%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    min-width: 50px;
+    height: 36px;
+    background-color: #d14f4f;
+    border-radius: 5px;
+  
+    font-size: 14px;
+    color: #fff;
+    line-height: 1.2;
+    font-weight: bold;
+}
+
+.close-location-btn {
+    position: absolute;
+    bottom: 2%;
+    left: 70%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    min-width: 50px;
+    height: 36px;
+    background-color: #d14f4f;
+    border-radius: 5px;
+  
+    font-size: 14px;
+    color: #fff;
+    line-height: 1.2;
+    font-weight: bold;
+}
+
+.vaccine-location-tab {
+    position:absolute;
+    top:0.25em;
+    left: 0;
+    width: 100%;
+    height: 39em;
+    background-color:white;
+    display: none;
+    z-index: 100;
+}
+
+.information-tab {
+    position:absolute;
+    top:0.25em;
+    left: 0;
+    width: 100%;
+    height: 39em;
+    background-color:white;
+    display: none;
+    z-index: 100;  
+    overflow: auto;
+}
+
+.information-content {
+    position: relative;
+    top: 5%;
+    left: 0;
+    width: 100%;
+    height: 80%;
+}
+
+.information-title {
+    position: relative;
+    top: 1%;
+    text-align: center;
+    font-size: 20px;
+}
+
+.question {
+    position: relative;
+    width: 100%;
+    top: 3%;
+    left: 1%;
+    font-size: 18px;
+    font-weight:bold;
+}
+
+.answer {
+    position: relative;
+    width: 85%;
+    top: 3%;
+    left: 10%;
+    font-size: 16px; 
+    text-align: justify;  
+}
+
 .p-value {
     position: relative;
     left: 100px;
+}
+
+.p-value-2 {
+    position: relative;
+    left: 20px;
 }
 
 #map {
@@ -406,6 +721,129 @@ body {
     width: 100%;
     height: 100%;
   }
+
+  .map-info {
+      position: relative;
+      width: 80%;
+      height: 10%;
+      top: 2%;
+      left: 10%;
+      background-color: #fff;
+      border: 1px solid #fff;
+      border-radius: 5px;
+  }
+
+  .map-info-content1 {
+      position: absolute;
+      background-color: transparent;
+      width: 20%;
+      height: 100%;
+      top: 0%;
+      left: 0;
+      
+  }
+
+  .map-info-content2 {
+    position: absolute;
+    background-color: transparent;
+    width: 20%;
+    height: 100%;
+    top: 0%;
+    left: 20%;
+    
+}
+
+.map-info-content3 {
+    position: absolute;
+    background-color: transparent;
+    width: 20%;
+    height: 100%;
+    top: 0%;
+    left: 40%;
+    
+}
+
+.map-info-content4 {
+    position: absolute;
+    background-color: transparent;
+    width: 20%;
+    height: 100%;
+    top: 0%;
+    left: 60%;
+    
+}
+
+.map-info-content5 {
+    position: absolute;
+    background-color: transparent;
+    width: 20%;
+    height: 100%;
+    top: 0%;
+    left: 80%;
+    
+}
+
+.dot1 {
+    position: absolute;
+    top: 10%;
+    left: 25%;
+    height: 20px;
+    width: 20px;
+    background-color: rgba(0,255,0,0.2);
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot2 {
+    position: absolute;
+    top: 10%;
+    left: 25%;
+    height: 20px;
+    width: 20px;
+    background-color: rgba(0,255,0,0.4);
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot3 {
+    position: absolute;
+    top: 10%;
+    left: 25%;
+    height: 20px;
+    width: 20px;
+    background-color: rgba(0,255,0,0.6);
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot4 {
+    position: absolute;
+    top: 10%;
+    left: 26%;
+    height: 20px;
+    width: 20px;
+    background-color: rgba(0,255,0,0.8);
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot5 {
+    position: absolute;
+    top: 10%;
+    left: 30%;
+    height: 20px;
+    width: 20px;
+    background-color: rgba(0,255,0,1);
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.map-info-value {
+    position: absolute;
+    top: 60%;
+    left: 15%;
+    font-size: 12px;
+}
 
 
 /* .map {
